@@ -45,21 +45,7 @@ public class LoginController {
 		return "redirect:/";
 	}
 	
-	@RequestMapping(value = "/loginController/insertData.do", method = RequestMethod.POST)
-	public String insertData(HttpServletRequest request) throws UnsupportedEncodingException, SQLException{
-		request.setCharacterEncoding("utf-8");
-		service.insertData();
-		
-		return "redirect:/";
-	}
-	
-	@RequestMapping(value = "/loginController/updateData.do", method = RequestMethod.POST)
-	public String updateData(HttpServletRequest request) throws UnsupportedEncodingException, SQLException{
-		request.setCharacterEncoding("utf-8");
-		service.updateData();
-		
-		return "redirect:/";
-	}
+
 	
 	@RequestMapping(value = "/loginController/selectData.do", method = RequestMethod.POST)
 	public String selectData(HttpServletRequest request) throws UnsupportedEncodingException, SQLException{
@@ -69,37 +55,7 @@ public class LoginController {
 		return "redirect:/";
 	}
 	
-	@RequestMapping(value = "/loginController/deleteData.do", method = RequestMethod.POST)
-	public String deleteData(HttpServletRequest request) throws UnsupportedEncodingException, SQLException{
-		request.setCharacterEncoding("utf-8");
-		service.deleteData();
-		
-		return "redirect:/";
-	}
 	
-	@RequestMapping(value = "/loginController/dropTable.do", method = RequestMethod.POST)
-	public String dropTable(HttpServletRequest request) throws UnsupportedEncodingException, SQLException{
-		request.setCharacterEncoding("utf-8");
-		service.dropTable();
-		
-		return "redirect:/";
-	}
-	
-	@RequestMapping(value = "/loginController/dropDB.do", method = RequestMethod.POST)
-	public String dropDB(HttpServletRequest request) throws UnsupportedEncodingException, SQLException{
-		request.setCharacterEncoding("utf-8");
-		service.dropDB();
-		
-		return "redirect:/";
-	}
-	
-	@RequestMapping(value = "/loginController/dropACcount.do", method = RequestMethod.POST)
-	public String dropACcount(HttpServletRequest request) throws UnsupportedEncodingException, SQLException{
-		request.setCharacterEncoding("utf-8");
-		service.dropACcount();
-		
-		return "redirect:/";
-	}
 	
 	@RequestMapping(value = "/loginController/login.do", method = RequestMethod.POST)
 	public String login(HttpServletRequest request) throws UnsupportedEncodingException{
@@ -120,9 +76,12 @@ public class LoginController {
 		logger.info("로그인 요청:"+userID);
 		if(user == null){
 			return "redirect:/";
+		}else if(user.category == "학생"){
+			request.getSession().setAttribute("userSession", user);
+			return "Student";
 		}else{
 			request.getSession().setAttribute("userSession", user);
-			return "sugang";
+			return "Professor";
 		}
 	}
 	
@@ -131,6 +90,7 @@ public class LoginController {
 		request.getSession().removeAttribute("userSession");
 		return "redirect:/";
 	}
+	
 }
 
 

@@ -4,6 +4,7 @@ public class User {
 	private String ID;
 	private String name;
 	private String password;
+	String category;
 	
 	public String getID() {
 		return ID;
@@ -23,6 +24,12 @@ public class User {
 	}
 	public String getPassword() {
 		return this.password;
+	}
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
 	

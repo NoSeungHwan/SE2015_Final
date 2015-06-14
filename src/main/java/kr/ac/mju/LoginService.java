@@ -83,41 +83,40 @@ public class LoginService {
 		String tableSQL = "CREATE TABLE user"
 				+ "(ID VARCHAR(10) NOT NULL primary key,"
 				+ "PASSWORD VARCHAR(10) NOT NULL,"
-				+ "NAME VARCHAR(10) NOT NULL);";
+				+ "NAME VARCHAR(10) NOT NULL,"
+				+ "GRADE VARCHAR(10)NOT NULL);";
 		statement = connection.prepareStatement(tableSQL);
 		statement.executeUpdate();
 		System.out.println("테이블 생성");
 		
-		connection.close();
-		statement.close();
-	}
-	
-	public void insertData() throws SQLException {
-		Connection connection = null;
-		PreparedStatement statement = null;
 		
 		connection = getConnection();
-		String insertSQL = "insert into user (id, password, name) values (?, ?, ?);";
+		String insertSQL = "insert into user (id, password, name, grade) values (?, ?, ?, ?);";
 		statement = connection.prepareStatement(insertSQL);
-		statement.setString(1, "id0");
-		statement.setString(2, "pw0");
+		statement.setString(1, "60112342");
+		statement.setString(2, "12345");
 		statement.setString(3, "name0");
+		statement.setString(4, "학생");
 		statement.executeUpdate();
-		statement.setString(1, "id1");
-		statement.setString(2, "pw1");
+		statement.setString(1, "10128");
+		statement.setString(2, "12345");
 		statement.setString(3, "name1");
+		statement.setString(4, "교수");
 		statement.executeUpdate();
 		statement.setString(1, "id2");
 		statement.setString(2, "pw2");
 		statement.setString(3, "name2");
+		statement.setString(4, "0");
 		statement.executeUpdate();
 		statement.setString(1, "id3");
 		statement.setString(2, "pw3");
 		statement.setString(3, "name3");
+		statement.setString(4, "0");
 		statement.executeUpdate();
 		statement.setString(1, "id4");
 		statement.setString(2, "pw4");
 		statement.setString(3, "name4");
+		statement.setString(4, "0");
 		statement.executeUpdate();
 		
 		System.out.println("데이터 입력");
@@ -126,20 +125,6 @@ public class LoginService {
 		statement.close();
 	}
 	
-	public void updateData() throws SQLException {
-		Connection connection = null;
-		PreparedStatement statement = null;
-		
-		connection = getConnection();
-		String updataSQL = "update user set password='pw5', id='id5', name='name5' where id='id0';";
-		statement = connection.prepareStatement(updataSQL);
-		statement.executeUpdate();
-		
-		System.out.println("데이터 업데이트");
-		
-		connection.close();
-		statement.close();
-	}
 	
 	public void selectData() throws SQLException {
 		Connection connection = null;
@@ -162,64 +147,9 @@ public class LoginService {
 		closeConnection(connection, statement, resultSet);
 	}
 	
-	public void deleteData() throws SQLException {
-		Connection connection = null;
-		PreparedStatement statement = null;
-		
-		connection = getConnection();
-		String deleteSQL = "delete from user where id='id5';";
-		statement = connection.prepareStatement(deleteSQL);
-		statement.executeUpdate();
-		System.out.println("id5 데이터 삭제");
-		
-		connection.close();
-		statement.close();
-	}
+
 	
-	public void dropTable() throws SQLException {
-		Connection connection = null;
-		PreparedStatement statement = null;
-		
-		connection = getConnection();
-		String dropTableSQL = "drop table user;";
-		statement = connection.prepareStatement(dropTableSQL);
-		statement.executeUpdate();
-		System.out.println("테이블 삭제");
-		
-		connection.close();
-		statement.close();
-	}
 	
-	public void dropDB() throws SQLException {
-		Connection connection = null;
-		PreparedStatement statement = null;
-		
-		connection = getConnection();
-		String dropDBSQL = "drop database sogongDB;";
-		statement = connection.prepareStatement(dropDBSQL);
-		statement.executeUpdate();
-		System.out.println("데이터베이스 삭제");
-		
-		connection.close();
-		statement.close();
-	}
-	
-	public void dropACcount() throws SQLException {
-		Connection connection = null;
-		PreparedStatement statement = null;
-		
-		connection = DriverManager.getConnection(
-				"jdbc:mysql://localhost:3306", 
-				"root",
-				"tiger");
-		String dropAccount = "drop user sogong2015@localhost;";
-		statement = connection.prepareStatement(dropAccount);
-		statement.executeUpdate();
-		System.out.println("계정삭제");
-		
-		connection.close();
-		statement.close();
-	}
 	
 	public User login(String userID, String userPassword) 
 			throws ClassNotFoundException, SQLException {

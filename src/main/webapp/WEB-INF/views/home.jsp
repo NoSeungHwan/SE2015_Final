@@ -17,7 +17,10 @@
 		<input type="submit" value="로그인">
 	</form>
 	
+	<a href="">회원가입</a>
+	
 <h6 color ='red'>만일 로그인이 되지 않는다면 관리자에게 문의 바랍니다.</h6>
+
 	<form action="loginController/createAccount.do" method="post">
 		<input type="submit" value="계정 생성">
 	</form>
@@ -32,34 +35,6 @@
 		<input type="submit" value="테이블 생성">
 	</form>
 	
-	<form action="loginController/insertData.do" method="post">
-		<input type="submit" value="데이터 인서트">
-	</form>
-	
-	<form action="loginController/updateData.do" method="post">
-		<input type="submit" value="데이터 업데이트">
-	</form>
-	
-	<form action="loginController/selectData.do" method="post">
-		<input type="submit" value="데이터 출력">
-	</form>
-	
-	<form action="loginController/deleteData.do" method="post">
-		<input type="submit" value="데이터 삭제">
-	</form>
-	
-	<form action="loginController/dropTable.do" method="post">
-		<input type="submit" value="테이블 삭제">
-	</form>
-	
-	<form action="loginController/dropDB.do" method="post">
-		<input type="submit" value="데이터베이스 삭제">
-	</form>
-	
-	<form action="loginController/dropACcount.do" method="post">
-		<input type="submit" value="계정 삭제">
-	</form>
-
 </body>
 </html>
 
