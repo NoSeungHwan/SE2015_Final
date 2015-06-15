@@ -6,6 +6,8 @@ public class Course {
 	private String c_year;
 	private String c_rank;
 	private String c_many;
+	private String c_grade;
+
 	
 	
 	public String getC_id() {
@@ -44,7 +46,6 @@ public class Course {
 	public void setC_grade(String c_grade) {
 		this.c_grade = c_grade;
 	}
-	private String c_grade;
 	
 
 }

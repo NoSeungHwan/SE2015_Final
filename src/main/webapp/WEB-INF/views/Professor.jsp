@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>교수페이지</h1>
-<a href="${pageContext.request.contextPath}/loginController/logout">1.강좌개설</a>
+<a href="${pageContext.request.contextPath}/HomeController/Gesul">1.강좌개설</a>
 <a href="${pageContext.request.contextPath}/loginController/logout">2.성적부여</a>
 <a href="${pageContext.request.contextPath}/loginController/logout">로그아웃</a>
 
