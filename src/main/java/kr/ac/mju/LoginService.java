@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class LoginService {
 	private final static String URL = "jdbc:mysql://localhost:3306/sogongDB";
-	private final static String ID = "sogong2015";
+	private final static String ID = "root";
 	private final static String PASSWORD = "mju12345";
 	
 	static {
@@ -47,12 +47,12 @@ public class LoginService {
 		connection = DriverManager.getConnection(
 				"jdbc:mysql://localhost:3306", 
 				"root",
-				"tiger");
-		String accountSQL = "grant all privileges on *.* to sogong2015@localhost "
+				"mju12345");
+		String accountSQL = "grant all privileges on *.* to root@localhost "
 				+ "identified by 'mju12345' with grant option";
 		statement = connection.prepareStatement(accountSQL);
 		statement.executeUpdate();
-		System.out.println("계정 생성");
+		System.out.println("怨꾩젙 �깮�꽦");
 		
 		connection.close();
 		statement.close();
@@ -64,12 +64,12 @@ public class LoginService {
 		
 		connection = DriverManager.getConnection(
 				"jdbc:mysql://localhost:3306", 
-				"sogong2015",
+				"root",
 				"mju12345");
 		String dbSQL = "create database sogongDB;";
 		statement = connection.prepareStatement(dbSQL);
 		statement.executeUpdate();
-		System.out.println("데이터베이스 생성");
+		System.out.println("�뜲�씠�꽣踰좎씠�뒪 �깮�꽦");
 		
 		connection.close();
 		statement.close();
@@ -87,7 +87,7 @@ public class LoginService {
 				+ "GRADE VARCHAR(10)NOT NULL);";
 		statement = connection.prepareStatement(tableSQL);
 		statement.executeUpdate();
-		System.out.println("테이블 생성");
+		System.out.println("�뀒�씠釉� �깮�꽦");
 		
 		
 		connection = getConnection();
@@ -96,12 +96,12 @@ public class LoginService {
 		statement.setString(1, "60112342");
 		statement.setString(2, "12345");
 		statement.setString(3, "name0");
-		statement.setString(4, "학생");
+		statement.setString(4, "�븰�깮");
 		statement.executeUpdate();
 		statement.setString(1, "10128");
 		statement.setString(2, "12345");
 		statement.setString(3, "name1");
-		statement.setString(4, "교수");
+		statement.setString(4, "援먯닔");
 		statement.executeUpdate();
 		statement.setString(1, "id2");
 		statement.setString(2, "pw2");
@@ -119,7 +119,7 @@ public class LoginService {
 		statement.setString(4, "0");
 		statement.executeUpdate();
 		
-		System.out.println("데이터 입력");
+		System.out.println("�뜲�씠�꽣 �엯�젰");
 		
 		connection.close();
 		statement.close();
@@ -135,7 +135,7 @@ public class LoginService {
 		String selectSQL = "select * from user;";
 		statement = connection.prepareStatement(selectSQL);
 		resultSet = statement.executeQuery();
-		System.out.println("데이터 출력");
+		System.out.println("�뜲�씠�꽣 異쒕젰");
 		
 		while(resultSet.next()) {
 			String id = resultSet.getString("id");
@@ -154,7 +154,7 @@ public class LoginService {
 	public User login(String userID, String userPassword) 
 			throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
-		// dao 호출
+		// dao �샇異�
 		//Class.forName("com.mysql.jdbc.Driver");
 		
 		Connection connection = null;
